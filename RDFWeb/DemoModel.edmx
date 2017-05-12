@@ -1,0 +1,1162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DemoModel.Store" Alias="Self" Provider="OpenLink.Data.Virtuoso" ProviderManifestToken="Virtuoso5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="DemoModelStoreContainer">
+          <EntitySet Name="Artist" EntityType="DemoModel.Store.Artist" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Categories" EntityType="DemoModel.Store.Categories" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Countries" EntityType="DemoModel.Store.Countries" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Customers" EntityType="DemoModel.Store.Customers" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Employees" EntityType="DemoModel.Store.Employees" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Flags" EntityType="DemoModel.Store.Flags" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Order_Details" EntityType="DemoModel.Store.Order_Details" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Orders" EntityType="DemoModel.Store.Orders" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Products" EntityType="DemoModel.Store.Products" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Provinces" EntityType="DemoModel.Store.Provinces" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Shippers" EntityType="DemoModel.Store.Shippers" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="Suppliers" EntityType="DemoModel.Store.Suppliers" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="WorkOfArt" EntityType="DemoModel.Store.WorkOfArt" store:Type="Tables" Schema="demo" />
+          <EntitySet Name="WorkOfArtType" EntityType="DemoModel.Store.WorkOfArtType" store:Type="Tables" Schema="demo" />
+          <AssociationSet Name="Artist_Countries_CountryCode_Code" Association="DemoModel.Store.Artist_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Artist" EntitySet="Artist" />
+          </AssociationSet>
+          <AssociationSet Name="Flags_Countries_CountryCode_Code" Association="DemoModel.Store.Flags_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Flags" EntitySet="Flags" />
+          </AssociationSet>
+          <AssociationSet Name="Order_Details_Orders_OrderID_OrderID" Association="DemoModel.Store.Order_Details_Orders_OrderID_OrderID">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="Order_Details_Products_ProductID_ProductID" Association="DemoModel.Store.Order_Details_Products_ProductID_ProductID">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_Customers_CustomerID_CustomerID" Association="DemoModel.Store.Orders_Customers_CustomerID_CustomerID">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_Employees_EmployeeID_EmployeeID" Association="DemoModel.Store.Orders_Employees_EmployeeID_EmployeeID">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_Shippers_ShipVia_ShipperID" Association="DemoModel.Store.Orders_Shippers_ShipVia_ShipperID">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Products_Categories_CategoryID_CategoryID" Association="DemoModel.Store.Products_Categories_CategoryID_CategoryID">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Products_Suppliers_SupplierID_SupplierID" Association="DemoModel.Store.Products_Suppliers_SupplierID_SupplierID">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Provinces_Countries_CountryCode_Code" Association="DemoModel.Store.Provinces_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="WorkOfArt_Artist_ArtistID_ArtistID" Association="DemoModel.Store.WorkOfArt_Artist_ArtistID_ArtistID">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="WorkOfArt" EntitySet="WorkOfArt" />
+          </AssociationSet>
+          <AssociationSet Name="WorkOfArt_Countries_CountryCode_Code" Association="DemoModel.Store.WorkOfArt_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="WorkOfArt" EntitySet="WorkOfArt" />
+          </AssociationSet>
+          <AssociationSet Name="WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID" Association="DemoModel.Store.WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID">
+            <End Role="WorkOfArtType" EntitySet="WorkOfArtType" />
+            <End Role="WorkOfArt" EntitySet="WorkOfArt" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="INTEGER" Nullable="false" />
+          <Property Name="CountryCode" Type="VARCHAR" MaxLength="0" />
+          <Property Name="Name" Type="VARCHAR" MaxLength="0" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="INTEGER" Nullable="false" />
+          <Property Name="CategoryName" Type="VARCHAR" MaxLength="15" />
+          <Property Name="Description" Type="LONG VARCHAR" />
+          <Property Name="Picture" Type="LONG VARBINARY" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="VARCHAR" Nullable="false" MaxLength="0" />
+          <Property Name="Code" Type="VARCHAR" MaxLength="0" />
+          <Property Name="SmallFlagDAVResourceName" Type="VARCHAR" MaxLength="0" />
+          <Property Name="LargeFlagDAVResourceName" Type="VARCHAR" MaxLength="0" />
+          <Property Name="SmallFlagDAVResourceURI" Type="VARCHAR" MaxLength="0" />
+          <Property Name="LargeFlagDAVResourceURI" Type="VARCHAR" MaxLength="0" />
+          <Property Name="Lat" Type="REAL" />
+          <Property Name="Lng" Type="REAL" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="VARCHAR" Nullable="false" MaxLength="5" />
+          <Property Name="CompanyName" Type="VARCHAR" MaxLength="40" />
+          <Property Name="ContactName" Type="VARCHAR" MaxLength="30" />
+          <Property Name="ContactTitle" Type="VARCHAR" MaxLength="30" />
+          <Property Name="Address" Type="VARCHAR" MaxLength="60" />
+          <Property Name="City" Type="VARCHAR" MaxLength="15" />
+          <Property Name="Region" Type="VARCHAR" MaxLength="15" />
+          <Property Name="PostalCode" Type="VARCHAR" MaxLength="10" />
+          <Property Name="Country" Type="VARCHAR" MaxLength="15" />
+          <Property Name="CountryCode" Type="VARCHAR" MaxLength="2" />
+          <Property Name="Phone" Type="VARCHAR" MaxLength="24" />
+          <Property Name="Fax" Type="VARCHAR" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="INTEGER" Nullable="false" />
+          <Property Name="LastName" Type="VARCHAR" MaxLength="20" />
+          <Property Name="FirstName" Type="VARCHAR" MaxLength="10" />
+          <Property Name="Title" Type="VARCHAR" MaxLength="30" />
+          <Property Name="TitleOfCourtesy" Type="VARCHAR" MaxLength="25" />
+          <Property Name="BirthDate" Type="DATE" />
+          <Property Name="HireDate" Type="DATE" />
+          <Property Name="Address" Type="VARCHAR" MaxLength="60" />
+          <Property Name="City" Type="VARCHAR" MaxLength="15" />
+          <Property Name="Region" Type="VARCHAR" MaxLength="15" />
+          <Property Name="PostalCode" Type="VARCHAR" MaxLength="10" />
+          <Property Name="Country" Type="VARCHAR" MaxLength="15" />
+          <Property Name="CountryCode" Type="VARCHAR" MaxLength="2" />
+          <Property Name="HomePhone" Type="VARCHAR" MaxLength="24" />
+          <Property Name="Extension" Type="VARCHAR" MaxLength="4" />
+          <Property Name="Photo" Type="LONG VARBINARY" />
+          <Property Name="Notes" Type="LONG VARCHAR" />
+          <Property Name="ReportsTo" Type="INTEGER" />
+        </EntityType>
+        <EntityType Name="Flags">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="CountryCode" Type="VARCHAR" Nullable="false" MaxLength="128" />
+          <Property Name="LargeFlag" Type="LONG VARBINARY" />
+          <Property Name="SmallFlag" Type="LONG VARBINARY" />
+        </EntityType>
+        <EntityType Name="Order_Details">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="INTEGER" Nullable="false" />
+          <Property Name="ProductID" Type="INTEGER" Nullable="false" />
+          <Property Name="UnitPrice" Type="DOUBLE PRECISION" />
+          <Property Name="Quantity" Type="SMALLINT" />
+          <Property Name="Discount" Type="REAL" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="INTEGER" Nullable="false" />
+          <Property Name="CustomerID" Type="VARCHAR" MaxLength="5" />
+          <Property Name="EmployeeID" Type="INTEGER" />
+          <Property Name="OrderDate" Type="DATETIME" Precision="0" />
+          <Property Name="RequiredDate" Type="DATE" />
+          <Property Name="ShippedDate" Type="DATETIME" Precision="0" />
+          <Property Name="ShipVia" Type="INTEGER" />
+          <Property Name="Freight" Type="DOUBLE PRECISION" />
+          <Property Name="ShipName" Type="VARCHAR" MaxLength="40" />
+          <Property Name="ShipAddress" Type="VARCHAR" MaxLength="60" />
+          <Property Name="ShipCity" Type="VARCHAR" MaxLength="15" />
+          <Property Name="ShipRegion" Type="VARCHAR" MaxLength="15" />
+          <Property Name="ShipPostalCode" Type="VARCHAR" MaxLength="10" />
+          <Property Name="ShipCountry" Type="VARCHAR" MaxLength="15" />
+          <Property Name="ShipCountryCode" Type="VARCHAR" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="INTEGER" Nullable="false" />
+          <Property Name="ProductName" Type="VARCHAR" MaxLength="40" />
+          <Property Name="SupplierID" Type="INTEGER" />
+          <Property Name="CategoryID" Type="INTEGER" />
+          <Property Name="QuantityPerUnit" Type="VARCHAR" MaxLength="20" />
+          <Property Name="UnitPrice" Type="DOUBLE PRECISION" />
+          <Property Name="UnitsInStock" Type="SMALLINT" />
+          <Property Name="UnitsOnOrder" Type="SMALLINT" />
+          <Property Name="ReorderLevel" Type="SMALLINT" />
+          <Property Name="Discontinued" Type="SMALLINT" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="Province" />
+          </Key>
+          <Property Name="CountryCode" Type="VARCHAR" Nullable="false" MaxLength="0" />
+          <Property Name="Province" Type="VARCHAR" Nullable="false" MaxLength="0" />
+        </EntityType>
+        <EntityType Name="Shippers">
+          <Key>
+            <PropertyRef Name="ShipperID" />
+          </Key>
+          <Property Name="ShipperID" Type="INTEGER" Nullable="false" />
+          <Property Name="CompanyName" Type="VARCHAR" MaxLength="40" />
+          <Property Name="Phone" Type="VARCHAR" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="INTEGER" Nullable="false" />
+          <Property Name="CompanyName" Type="VARCHAR" MaxLength="40" />
+          <Property Name="ContactName" Type="VARCHAR" MaxLength="30" />
+          <Property Name="ContactTitle" Type="VARCHAR" MaxLength="30" />
+          <Property Name="Address" Type="VARCHAR" MaxLength="60" />
+          <Property Name="City" Type="VARCHAR" MaxLength="15" />
+          <Property Name="Region" Type="VARCHAR" MaxLength="15" />
+          <Property Name="PostalCode" Type="VARCHAR" MaxLength="10" />
+          <Property Name="Country" Type="VARCHAR" MaxLength="15" />
+          <Property Name="CountryCode" Type="VARCHAR" MaxLength="2" />
+          <Property Name="Phone" Type="VARCHAR" MaxLength="24" />
+          <Property Name="Fax" Type="VARCHAR" MaxLength="24" />
+          <Property Name="HomePage" Type="LONG VARCHAR" />
+        </EntityType>
+        <EntityType Name="WorkOfArt">
+          <Key>
+            <PropertyRef Name="WorkArtID" />
+          </Key>
+          <Property Name="WorkArtID" Type="INTEGER" Nullable="false" />
+          <Property Name="CountryCode" Type="VARCHAR" MaxLength="0" />
+          <Property Name="WorkArtType" Type="INTEGER" />
+          <Property Name="ArtistID" Type="INTEGER" />
+          <Property Name="Photo" Type="LONG VARBINARY" />
+          <Property Name="PhotoDAVResourceName" Type="VARCHAR" MaxLength="0" />
+          <Property Name="PhotoDAVResourceURI" Type="VARCHAR" MaxLength="0" />
+          <Property Name="Description" Type="LONG VARCHAR" />
+        </EntityType>
+        <EntityType Name="WorkOfArtType">
+          <Key>
+            <PropertyRef Name="WorkArtTypeID" />
+          </Key>
+          <Property Name="WorkArtTypeID" Type="INTEGER" Nullable="false" />
+          <Property Name="Description" Type="VARCHAR" MaxLength="0" />
+        </EntityType>
+        <Association Name="Artist_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Store.Countries" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Artist" Type="DemoModel.Store.Artist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Artist">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Flags_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Store.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Flags" Type="DemoModel.Store.Flags" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Flags">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Order_Details_Orders_OrderID_OrderID">
+          <End Role="Orders" Type="DemoModel.Store.Orders" Multiplicity="1" />
+          <End Role="Order_Details" Type="DemoModel.Store.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Order_Details_Products_ProductID_ProductID">
+          <End Role="Products" Type="DemoModel.Store.Products" Multiplicity="1" />
+          <End Role="Order_Details" Type="DemoModel.Store.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Orders_Customers_CustomerID_CustomerID">
+          <End Role="Customers" Type="DemoModel.Store.Customers" Multiplicity="0..1" />
+          <End Role="Orders" Type="DemoModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Orders_Employees_EmployeeID_EmployeeID">
+          <End Role="Employees" Type="DemoModel.Store.Employees" Multiplicity="0..1" />
+          <End Role="Orders" Type="DemoModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Orders_Shippers_ShipVia_ShipperID">
+          <End Role="Shippers" Type="DemoModel.Store.Shippers" Multiplicity="0..1" />
+          <End Role="Orders" Type="DemoModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="ShipperID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ShipVia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Products_Categories_CategoryID_CategoryID">
+          <End Role="Categories" Type="DemoModel.Store.Categories" Multiplicity="0..1" />
+          <End Role="Products" Type="DemoModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Products_Suppliers_SupplierID_SupplierID">
+          <End Role="Suppliers" Type="DemoModel.Store.Suppliers" Multiplicity="0..1" />
+          <End Role="Products" Type="DemoModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Provinces_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Store.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Provinces" Type="DemoModel.Store.Provinces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WorkOfArt_Artist_ArtistID_ArtistID">
+          <End Role="Artist" Type="DemoModel.Store.Artist" Multiplicity="0..1" />
+          <End Role="WorkOfArt" Type="DemoModel.Store.WorkOfArt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="WorkOfArt">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WorkOfArt_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Store.Countries" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkOfArt" Type="DemoModel.Store.WorkOfArt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="WorkOfArt">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID">
+          <End Role="WorkOfArtType" Type="DemoModel.Store.WorkOfArtType" Multiplicity="0..1" />
+          <End Role="WorkOfArt" Type="DemoModel.Store.WorkOfArt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOfArtType">
+              <PropertyRef Name="WorkArtTypeID" />
+            </Principal>
+            <Dependent Role="WorkOfArt">
+              <PropertyRef Name="WorkArtType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemoModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="DemoEntities">
+          <EntitySet Name="Artist" EntityType="DemoModel.Artist" />
+          <EntitySet Name="Categories" EntityType="DemoModel.Categories" />
+          <EntitySet Name="Countries" EntityType="DemoModel.Countries" />
+          <EntitySet Name="Customers" EntityType="DemoModel.Customers" />
+          <EntitySet Name="Employees" EntityType="DemoModel.Employees" />
+          <EntitySet Name="Flags" EntityType="DemoModel.Flags" />
+          <EntitySet Name="Order_Details" EntityType="DemoModel.Order_Details" />
+          <EntitySet Name="Orders" EntityType="DemoModel.Orders" />
+          <EntitySet Name="Products" EntityType="DemoModel.Products" />
+          <EntitySet Name="Provinces" EntityType="DemoModel.Provinces" />
+          <EntitySet Name="Shippers" EntityType="DemoModel.Shippers" />
+          <EntitySet Name="Suppliers" EntityType="DemoModel.Suppliers" />
+          <EntitySet Name="WorkOfArt" EntityType="DemoModel.WorkOfArt" />
+          <EntitySet Name="WorkOfArtType" EntityType="DemoModel.WorkOfArtType" />
+          <AssociationSet Name="Artist_Countries_CountryCode_Code" Association="DemoModel.Artist_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Artist" EntitySet="Artist" />
+          </AssociationSet>
+          <AssociationSet Name="WorkOfArt_Artist_ArtistID_ArtistID" Association="DemoModel.WorkOfArt_Artist_ArtistID_ArtistID">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="WorkOfArt" EntitySet="WorkOfArt" />
+          </AssociationSet>
+          <AssociationSet Name="Products_Categories_CategoryID_CategoryID" Association="DemoModel.Products_Categories_CategoryID_CategoryID">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Flags_Countries_CountryCode_Code" Association="DemoModel.Flags_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Flags" EntitySet="Flags" />
+          </AssociationSet>
+          <AssociationSet Name="Provinces_Countries_CountryCode_Code" Association="DemoModel.Provinces_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="WorkOfArt_Countries_CountryCode_Code" Association="DemoModel.WorkOfArt_Countries_CountryCode_Code">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="WorkOfArt" EntitySet="WorkOfArt" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_Customers_CustomerID_CustomerID" Association="DemoModel.Orders_Customers_CustomerID_CustomerID">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_Employees_EmployeeID_EmployeeID" Association="DemoModel.Orders_Employees_EmployeeID_EmployeeID">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Order_Details_Orders_OrderID_OrderID" Association="DemoModel.Order_Details_Orders_OrderID_OrderID">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="Order_Details_Products_ProductID_ProductID" Association="DemoModel.Order_Details_Products_ProductID_ProductID">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="Orders_Shippers_ShipVia_ShipperID" Association="DemoModel.Orders_Shippers_ShipVia_ShipperID">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Products_Suppliers_SupplierID_SupplierID" Association="DemoModel.Products_Suppliers_SupplierID_SupplierID">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID" Association="DemoModel.WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID">
+            <End Role="WorkOfArtType" EntitySet="WorkOfArtType" />
+            <End Role="WorkOfArt" EntitySet="WorkOfArt" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Countries" Relationship="DemoModel.Artist_Countries_CountryCode_Code" FromRole="Artist" ToRole="Countries" />
+          <NavigationProperty Name="WorkOfArt" Relationship="DemoModel.WorkOfArt_Artist_ArtistID_ArtistID" FromRole="Artist" ToRole="WorkOfArt" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Products" Relationship="DemoModel.Products_Categories_CategoryID_CategoryID" FromRole="Categories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="Code" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="SmallFlagDAVResourceName" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="LargeFlagDAVResourceName" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="SmallFlagDAVResourceURI" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="LargeFlagDAVResourceURI" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="Lat" Type="Single" />
+          <Property Name="Lng" Type="Single" />
+          <NavigationProperty Name="Artist" Relationship="DemoModel.Artist_Countries_CountryCode_Code" FromRole="Countries" ToRole="Artist" />
+          <NavigationProperty Name="Flags" Relationship="DemoModel.Flags_Countries_CountryCode_Code" FromRole="Countries" ToRole="Flags" />
+          <NavigationProperty Name="Provinces" Relationship="DemoModel.Provinces_Countries_CountryCode_Code" FromRole="Countries" ToRole="Provinces" />
+          <NavigationProperty Name="WorkOfArt" Relationship="DemoModel.WorkOfArt_Countries_CountryCode_Code" FromRole="Countries" ToRole="WorkOfArt" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="ContactName" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ContactTitle" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Region" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="DemoModel.Orders_Customers_CustomerID_CustomerID" FromRole="Customers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="TitleOfCourtesy" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Region" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
+          <Property Name="Extension" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ReportsTo" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="DemoModel.Orders_Employees_EmployeeID_EmployeeID" FromRole="Employees" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Flags">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="LargeFlag" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SmallFlag" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Countries" Relationship="DemoModel.Flags_Countries_CountryCode_Code" FromRole="Flags" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="Order_Details">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="Quantity" Type="Int16" />
+          <Property Name="Discount" Type="Single" />
+          <NavigationProperty Name="Orders" Relationship="DemoModel.Order_Details_Orders_OrderID_OrderID" FromRole="Order_Details" ToRole="Orders" />
+          <NavigationProperty Name="Products" Relationship="DemoModel.Order_Details_Products_ProductID_ProductID" FromRole="Order_Details" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="RequiredDate" Type="DateTime" Precision="0" />
+          <Property Name="ShippedDate" Type="DateTime" Precision="0" />
+          <Property Name="Freight" Type="Double" />
+          <Property Name="ShipName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="ShipAddress" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="ShipCity" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="ShipRegion" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="ShipPostalCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ShipCountry" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="ShipCountryCode" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Customers" Relationship="DemoModel.Orders_Customers_CustomerID_CustomerID" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="DemoModel.Orders_Employees_EmployeeID_EmployeeID" FromRole="Orders" ToRole="Employees" />
+          <NavigationProperty Name="Order_Details" Relationship="DemoModel.Order_Details_Orders_OrderID_OrderID" FromRole="Orders" ToRole="Order_Details" />
+          <NavigationProperty Name="Shippers" Relationship="DemoModel.Orders_Shippers_ShipVia_ShipperID" FromRole="Orders" ToRole="Shippers" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="QuantityPerUnit" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="UnitsInStock" Type="Int16" />
+          <Property Name="UnitsOnOrder" Type="Int16" />
+          <Property Name="ReorderLevel" Type="Int16" />
+          <Property Name="Discontinued" Type="Int16" />
+          <NavigationProperty Name="Categories" Relationship="DemoModel.Products_Categories_CategoryID_CategoryID" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="Order_Details" Relationship="DemoModel.Order_Details_Products_ProductID_ProductID" FromRole="Products" ToRole="Order_Details" />
+          <NavigationProperty Name="Suppliers" Relationship="DemoModel.Products_Suppliers_SupplierID_SupplierID" FromRole="Products" ToRole="Suppliers" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="Province" />
+          </Key>
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Countries" Relationship="DemoModel.Provinces_Countries_CountryCode_Code" FromRole="Provinces" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="Shippers">
+          <Key>
+            <PropertyRef Name="ShipperID" />
+          </Key>
+          <Property Name="ShipperID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="DemoModel.Orders_Shippers_ShipVia_ShipperID" FromRole="Shippers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="ContactName" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ContactTitle" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Region" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
+          <Property Name="HomePage" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Products" Relationship="DemoModel.Products_Suppliers_SupplierID_SupplierID" FromRole="Suppliers" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="WorkOfArt">
+          <Key>
+            <PropertyRef Name="WorkArtID" />
+          </Key>
+          <Property Name="WorkArtID" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoDAVResourceName" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="PhotoDAVResourceURI" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Artist" Relationship="DemoModel.WorkOfArt_Artist_ArtistID_ArtistID" FromRole="WorkOfArt" ToRole="Artist" />
+          <NavigationProperty Name="Countries" Relationship="DemoModel.WorkOfArt_Countries_CountryCode_Code" FromRole="WorkOfArt" ToRole="Countries" />
+          <NavigationProperty Name="WorkOfArtType" Relationship="DemoModel.WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID" FromRole="WorkOfArt" ToRole="WorkOfArtType" />
+        </EntityType>
+        <EntityType Name="WorkOfArtType">
+          <Key>
+            <PropertyRef Name="WorkArtTypeID" />
+          </Key>
+          <Property Name="WorkArtTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="4070" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="WorkOfArt" Relationship="DemoModel.WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID" FromRole="WorkOfArtType" ToRole="WorkOfArt" />
+        </EntityType>
+        <Association Name="Artist_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Countries" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Artist" Type="DemoModel.Artist" Multiplicity="*" />
+        </Association>
+        <Association Name="WorkOfArt_Artist_ArtistID_ArtistID">
+          <End Role="Artist" Type="DemoModel.Artist" Multiplicity="0..1" />
+          <End Role="WorkOfArt" Type="DemoModel.WorkOfArt" Multiplicity="*" />
+        </Association>
+        <Association Name="Products_Categories_CategoryID_CategoryID">
+          <End Role="Categories" Type="DemoModel.Categories" Multiplicity="0..1" />
+          <End Role="Products" Type="DemoModel.Products" Multiplicity="*" />
+        </Association>
+        <Association Name="Flags_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Flags" Type="DemoModel.Flags" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Flags">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Provinces_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Provinces" Type="DemoModel.Provinces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WorkOfArt_Countries_CountryCode_Code">
+          <End Role="Countries" Type="DemoModel.Countries" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkOfArt" Type="DemoModel.WorkOfArt" Multiplicity="*" />
+        </Association>
+        <Association Name="Orders_Customers_CustomerID_CustomerID">
+          <End Role="Customers" Type="DemoModel.Customers" Multiplicity="0..1" />
+          <End Role="Orders" Type="DemoModel.Orders" Multiplicity="*" />
+        </Association>
+        <Association Name="Orders_Employees_EmployeeID_EmployeeID">
+          <End Role="Employees" Type="DemoModel.Employees" Multiplicity="0..1" />
+          <End Role="Orders" Type="DemoModel.Orders" Multiplicity="*" />
+        </Association>
+        <Association Name="Order_Details_Orders_OrderID_OrderID">
+          <End Role="Orders" Type="DemoModel.Orders" Multiplicity="1" />
+          <End Role="Order_Details" Type="DemoModel.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Order_Details_Products_ProductID_ProductID">
+          <End Role="Products" Type="DemoModel.Products" Multiplicity="1" />
+          <End Role="Order_Details" Type="DemoModel.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Orders_Shippers_ShipVia_ShipperID">
+          <End Role="Shippers" Type="DemoModel.Shippers" Multiplicity="0..1" />
+          <End Role="Orders" Type="DemoModel.Orders" Multiplicity="*" />
+        </Association>
+        <Association Name="Products_Suppliers_SupplierID_SupplierID">
+          <End Role="Suppliers" Type="DemoModel.Suppliers" Multiplicity="0..1" />
+          <End Role="Products" Type="DemoModel.Products" Multiplicity="*" />
+        </Association>
+        <Association Name="WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID">
+          <End Role="WorkOfArtType" Type="DemoModel.WorkOfArtType" Multiplicity="0..1" />
+          <End Role="WorkOfArt" Type="DemoModel.WorkOfArt" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="DemoModelStoreContainer" CdmEntityContainer="DemoEntities">
+          <EntitySetMapping Name="Artist">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Artist)">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Categories)">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Countries)">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="SmallFlagDAVResourceName" ColumnName="SmallFlagDAVResourceName" />
+                <ScalarProperty Name="LargeFlagDAVResourceName" ColumnName="LargeFlagDAVResourceName" />
+                <ScalarProperty Name="SmallFlagDAVResourceURI" ColumnName="SmallFlagDAVResourceURI" />
+                <ScalarProperty Name="LargeFlagDAVResourceURI" ColumnName="LargeFlagDAVResourceURI" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Customers)">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Employees)">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TitleOfCourtesy" ColumnName="TitleOfCourtesy" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flags">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Flags)">
+              <MappingFragment StoreEntitySet="Flags">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="LargeFlag" ColumnName="LargeFlag" />
+                <ScalarProperty Name="SmallFlag" ColumnName="SmallFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Details">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Order_Details)">
+              <MappingFragment StoreEntitySet="Order_Details">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Orders)">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
+                <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="ShipAddress" ColumnName="ShipAddress" />
+                <ScalarProperty Name="ShipCity" ColumnName="ShipCity" />
+                <ScalarProperty Name="ShipRegion" ColumnName="ShipRegion" />
+                <ScalarProperty Name="ShipPostalCode" ColumnName="ShipPostalCode" />
+                <ScalarProperty Name="ShipCountry" ColumnName="ShipCountry" />
+                <ScalarProperty Name="ShipCountryCode" ColumnName="ShipCountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Products)">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="QuantityPerUnit" ColumnName="QuantityPerUnit" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="UnitsOnOrder" ColumnName="UnitsOnOrder" />
+                <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
+                <ScalarProperty Name="Discontinued" ColumnName="Discontinued" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Provinces)">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shippers">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Shippers)">
+              <MappingFragment StoreEntitySet="Shippers">
+                <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.Suppliers)">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOfArt">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.WorkOfArt)">
+              <MappingFragment StoreEntitySet="WorkOfArt">
+                <ScalarProperty Name="WorkArtID" ColumnName="WorkArtID" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PhotoDAVResourceName" ColumnName="PhotoDAVResourceName" />
+                <ScalarProperty Name="PhotoDAVResourceURI" ColumnName="PhotoDAVResourceURI" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOfArtType">
+            <EntityTypeMapping TypeName="IsTypeOf(DemoModel.WorkOfArtType)">
+              <MappingFragment StoreEntitySet="WorkOfArtType">
+                <ScalarProperty Name="WorkArtTypeID" ColumnName="WorkArtTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Artist_Countries_CountryCode_Code" TypeName="DemoModel.Artist_Countries_CountryCode_Code" StoreEntitySet="Artist">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="Name" ColumnName="CountryCode" />
+            </EndProperty>
+            <EndProperty Name="Artist">
+              <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+            </EndProperty>
+            <Condition ColumnName="CountryCode" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WorkOfArt_Artist_ArtistID_ArtistID" TypeName="DemoModel.WorkOfArt_Artist_ArtistID_ArtistID" StoreEntitySet="WorkOfArt">
+            <EndProperty Name="Artist">
+              <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+            </EndProperty>
+            <EndProperty Name="WorkOfArt">
+              <ScalarProperty Name="WorkArtID" ColumnName="WorkArtID" />
+            </EndProperty>
+            <Condition ColumnName="ArtistID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Products_Categories_CategoryID_CategoryID" TypeName="DemoModel.Products_Categories_CategoryID_CategoryID" StoreEntitySet="Products">
+            <EndProperty Name="Categories">
+              <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            </EndProperty>
+            <EndProperty Name="Products">
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            </EndProperty>
+            <Condition ColumnName="CategoryID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Flags_Countries_CountryCode_Code" TypeName="DemoModel.Flags_Countries_CountryCode_Code" StoreEntitySet="Flags">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="Name" ColumnName="CountryCode" />
+            </EndProperty>
+            <EndProperty Name="Flags">
+              <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Provinces_Countries_CountryCode_Code" TypeName="DemoModel.Provinces_Countries_CountryCode_Code" StoreEntitySet="Provinces">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="Name" ColumnName="CountryCode" />
+            </EndProperty>
+            <EndProperty Name="Provinces">
+              <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              <ScalarProperty Name="Province" ColumnName="Province" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WorkOfArt_Countries_CountryCode_Code" TypeName="DemoModel.WorkOfArt_Countries_CountryCode_Code" StoreEntitySet="WorkOfArt">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="Name" ColumnName="CountryCode" />
+            </EndProperty>
+            <EndProperty Name="WorkOfArt">
+              <ScalarProperty Name="WorkArtID" ColumnName="WorkArtID" />
+            </EndProperty>
+            <Condition ColumnName="CountryCode" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Orders_Customers_CustomerID_CustomerID" TypeName="DemoModel.Orders_Customers_CustomerID_CustomerID" StoreEntitySet="Orders">
+            <EndProperty Name="Customers">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            </EndProperty>
+            <EndProperty Name="Orders">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            </EndProperty>
+            <Condition ColumnName="CustomerID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Orders_Employees_EmployeeID_EmployeeID" TypeName="DemoModel.Orders_Employees_EmployeeID_EmployeeID" StoreEntitySet="Orders">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+            </EndProperty>
+            <EndProperty Name="Orders">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            </EndProperty>
+            <Condition ColumnName="EmployeeID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Order_Details_Orders_OrderID_OrderID" TypeName="DemoModel.Order_Details_Orders_OrderID_OrderID" StoreEntitySet="Order_Details">
+            <EndProperty Name="Orders">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            </EndProperty>
+            <EndProperty Name="Order_Details">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Order_Details_Products_ProductID_ProductID" TypeName="DemoModel.Order_Details_Products_ProductID_ProductID" StoreEntitySet="Order_Details">
+            <EndProperty Name="Products">
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            </EndProperty>
+            <EndProperty Name="Order_Details">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Orders_Shippers_ShipVia_ShipperID" TypeName="DemoModel.Orders_Shippers_ShipVia_ShipperID" StoreEntitySet="Orders">
+            <EndProperty Name="Shippers">
+              <ScalarProperty Name="ShipperID" ColumnName="ShipVia" />
+            </EndProperty>
+            <EndProperty Name="Orders">
+              <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            </EndProperty>
+            <Condition ColumnName="ShipVia" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Products_Suppliers_SupplierID_SupplierID" TypeName="DemoModel.Products_Suppliers_SupplierID_SupplierID" StoreEntitySet="Products">
+            <EndProperty Name="Suppliers">
+              <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+            </EndProperty>
+            <EndProperty Name="Products">
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            </EndProperty>
+            <Condition ColumnName="SupplierID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID" TypeName="DemoModel.WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID" StoreEntitySet="WorkOfArt">
+            <EndProperty Name="WorkOfArtType">
+              <ScalarProperty Name="WorkArtTypeID" ColumnName="WorkArtType" />
+            </EndProperty>
+            <EndProperty Name="WorkOfArt">
+              <ScalarProperty Name="WorkArtID" ColumnName="WorkArtID" />
+            </EndProperty>
+            <Condition ColumnName="WorkArtType" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="DemoModel">
+        <EntityTypeShape EntityType="DemoModel.Artist" Width="1.5" PointX="8" PointY="8.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Categories" Width="1.5" PointX="0.75" PointY="19" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Countries" Width="1.5" PointX="5.75" PointY="8.25" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Customers" Width="1.5" PointX="0.75" PointY="7.375" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Employees" Width="1.5" PointX="0.75" PointY="11.625" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Flags" Width="1.5" PointX="8" PointY="11.5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Order_Details" Width="1.5" PointX="5.25" PointY="1.875" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Orders" Width="1.5" PointX="3" PointY="1" Height="4.0956022135416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Products" Width="1.5" PointX="3" PointY="20.625" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Provinces" Width="1.5" PointX="8" PointY="6.625" Height="1.5956835937500005" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Shippers" Width="1.5" PointX="0.75" PointY="2.125" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Suppliers" Width="1.5" PointX="0.75" PointY="21.75" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.WorkOfArt" Width="1.5" PointX="10.25" PointY="8.625" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.WorkOfArtType" Width="1.5" PointX="8" PointY="4.125" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="DemoModel.Artist_Countries_CountryCode_Code" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="9.7689925130208337" />
+          <ConnectorPoint PointX="8" PointY="9.7689925130208337" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.WorkOfArt_Artist_ArtistID_ArtistID" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.5" PointY="9.7689925130208337" />
+          <ConnectorPoint PointX="10.25" PointY="9.7689925130208337" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Products_Categories_CategoryID_CategoryID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="20.802643229166666" />
+          <ConnectorPoint PointX="3" PointY="20.802643229166666" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Flags_Countries_CountryCode_Code" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.5" PointY="11.576396484375" />
+          <ConnectorPoint PointX="6.5" PointY="12.432191255208334" />
+          <ConnectorPoint PointX="8" PointY="12.432191255208334" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Provinces_Countries_CountryCode_Code" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.5" PointY="8.25" />
+          <ConnectorPoint PointX="6.5" PointY="7.422841796875" />
+          <ConnectorPoint PointX="8" PointY="7.422841796875" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.WorkOfArt_Countries_CountryCode_Code" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="10.953837890625" />
+          <ConnectorPoint PointX="10.25" PointY="10.953837890625" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Orders_Customers_CustomerID_CustomerID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.1343489583333337" />
+          <ConnectorPoint PointX="3.2604141666666666" PointY="9.1343489583333337" />
+          <ConnectorPoint PointX="3.4270808333333336" PointY="9.1343489583333337" />
+          <ConnectorPoint PointX="3.75" PointY="9.1343489583333337" />
+          <ConnectorPoint PointX="3.75" PointY="5.0956022135416656" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Orders_Employees_EmployeeID_EmployeeID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="13.961253255208334" />
+          <ConnectorPoint PointX="3.3437475" PointY="13.961253255208334" />
+          <ConnectorPoint PointX="3.3437475" PointY="5.0956022135416656" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Order_Details_Orders_OrderID_OrderID" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.0574446614583328" />
+          <ConnectorPoint PointX="5.25" PointY="3.0574446614583328" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Order_Details_Products_ProductID_ProductID" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="22.192047526041666" />
+          <ConnectorPoint PointX="5.46875" PointY="22.192047526041666" />
+          <ConnectorPoint PointX="5.46875" PointY="4.2398893229166656" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Orders_Shippers_ShipVia_ShipperID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.0189925130208333" />
+          <ConnectorPoint PointX="3" PointY="3.0189925130208333" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.Products_Suppliers_SupplierID_SupplierID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="22.754547526041666" />
+          <ConnectorPoint PointX="3" PointY="22.754547526041666" /></AssociationConnector>
+        <AssociationConnector Association="DemoModel.WorkOfArt_WorkOfArtType_WorkArtType_WorkArtTypeID" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.5" PointY="4.922841796875" />
+          <ConnectorPoint PointX="11" PointY="4.922841796875" />
+          <ConnectorPoint PointX="11" PointY="8.625" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
